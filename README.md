@@ -16,9 +16,9 @@ The **Quantitative Geopolitical Risk Assessment Engine** is a data-driven framew
 * **Network Simulation:** `networkx`
 
 ## Architecture
-1.  **Data Layer (`schema.sql`):** Tables for raw indicator data (conflict, currency, trade) and supply chain topology. Includes views for rolling averages and leading indicators.
-2.  **Risk Engine (`risk_assessment.py`):** Fetches cleaned data and applies a weighted algorithmic framework to generate a normalized 0-1 risk score per region.
-3.  **Simulation Engine (`monte_carlo_sim.py`):** Maps the supply chain as a directed graph. Uses the regional risk scores to trigger initial node failures, then calculates downstream propagation based on dependency weights.
+1.  **Data Layer (`database.sql`):** Tables for raw indicator data (conflict, currency, trade) and supply chain topology. Includes views for rolling averages and leading indicators.
+2.  **Risk Engine (`Risk.py`):** Fetches cleaned data and applies a weighted algorithmic framework to generate a normalized 0-1 risk score per region.
+3.  **Simulation Engine (`Monte_Carlo.py`):** Maps the supply chain as a directed graph. Uses the regional risk scores to trigger initial node failures, then calculates downstream propagation based on dependency weights.
 
 ## Usage (Prototype)
 To run the prototype simulation locally:
