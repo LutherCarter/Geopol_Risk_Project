@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@500;700&display=swap');
+
+:root {
+    --bg-dark: #0B0D17;
+    --panel-bg: rgba(22, 27, 34, 0.6);
+    --panel-border: rgba(255, 255, 255, 0.1);
+    --accent-blue: #00F0FF;
+    --accent-pink: #FF003C;
+    --accent-green: #39FF14;
+    --text-primary: #E5E7EB;
+    --text-muted: #9CA3AF;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--panel-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+}
+
+/* Layout Utilities */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 15px;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    gap: 15px;
+    min-height: 0; /* Important for flex child scrolling */
+}
+
+.controls-panel {
+    width: 25%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.network-panel {
+    width: 75%;
+    padding: 15px;
+    position: relative;
+}
+
+.alerts-panel {
+    height: 180px;
+    padding: 15px 25px;
+    overflow-y: auto;
+}
+
+/* Typography */
+h2, h3 {
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-blue);
+    margin-top: 0;
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 10px;
+}
+
+.control-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Run Button */
+.cyber-button {
+    background: transparent;
+    color: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+    padding: 12px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+.cyber-button:hover {
+    background: var(--accent-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--accent-blue);
+}
+
+.cyber-button:active {
+    transform: scale(0.98);
+}
+
+/* Custom Overrides for dcc.Dropdown */
+.Select-control {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid var(--panel-border) !important;
+    color: var(--text-primary) !important;
+}
+
+.Select-value-label {
+    color: var(--accent-blue) !important;
+}
+
+.Select-menu-outer {
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--accent-blue) !important;
+}
+
+.Select-option {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-primary) !important;
+}
+
+.Select-option:hover, .Select-option.is-focused {
+    background-color: rgba(0, 240, 255, 0.2) !important;
+    color: var(--accent-blue) !important;
+}
+
+/* Custom Overrides for dcc.Slider */
+.rc-slider-rail {
+    background-color: #333 !important;
+}
+.rc-slider-track {
+    background-color: var(--accent-pink) !important;
+}
+.rc-slider-handle {
+    border: 2px solid var(--accent-pink) !important;
+    background-color: var(--bg-dark) !important;
+    box-shadow: 0 0 5px var(--accent-pink) !important;
+}
+.rc-slider-mark-text {
+    color: var(--text-muted) !important;
+}
+
+/* Alert Styling */
+.alert-box {
+    background: rgba(255, 0, 60, 0.1);
+    border-left: 4px solid var(--accent-pink);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+.alert-info {
+    background: rgba(0, 240, 255, 0.05);
+    border-left: 2px solid var(--accent-blue);
+    padding: 8px 12px;
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 60, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 0, 60, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 60, 0); }
+}
