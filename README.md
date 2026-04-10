@@ -1,3 +1,6 @@
+# Note:
+This README is not intended to explain the project as it exists currently, but rather as it will eventually be. If you do run this program, please be aware that the website looks horrible at the moment, as this is the first time I've tried using dash. This will be updated in the future, and will surely improve as my website development skills improve.
+
 # Geopolitical Risk Engine
 
 A modular, containerized Geopolitical Risk Assessment Engine designed to ingest real-world data, perform spatial and time-decay risk modeling, and visualize supply chain vulnerabilities in a high-performance interactive dashboard.
