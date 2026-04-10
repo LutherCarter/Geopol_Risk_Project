@@ -1,0 +1,32 @@
+services:
+  # 1. Spatial Database
+  postgres-postgis:
+    image: postgis/postgis:14-3.3
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: risk_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init_postgis.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # 2. Orchestration & ETL
+  prefect-agent:
+    build: ./etl
+    depends_on:
+      - postgres-postgis
+    environment:
+      - DB_HOST=postgres-postgis
+      - POLYGON_API_KEY=${POLYGON_KEY:-demo}
+    command: python prefect_flows.py
+
+  # 3. Interactive Web UI
+  dash-app:
+    build: ./dashboard
+    ports:
+      - "8050:8050"
+    depends_on:
+      - postgres-postgis
+      - prefect-agent
+    command: python app.py
