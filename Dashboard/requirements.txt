@@ -1,0 +1,9 @@
+dash
+dash-cytoscape
+plotly
+numpy
+pandas
+scikit-learn
+sqlalchemy
+psycopg2-binary
+geoalchemy2
