@@ -1,0 +1,7 @@
+prefect==2.14.20
+griffe<1.0.0
+requests
+pandas
+sqlalchemy
+psycopg2-binary
+geoalchemy2

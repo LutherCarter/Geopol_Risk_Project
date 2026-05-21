@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geopolitical Risk Engine</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Top Nav -->
+        <header class="header-panel glass-panel">
+            <div class="header-title">
+                <h1>GEOPOLITICAL RISK ENGINE <span>// COMMAND CENTER</span></h1>
+            </div>
+            <div class="view-selector-container">
+                <label for="view-selector" class="control-label">Analysis Mode:</label>
+                <select id="view-selector" class="cyber-select">
+                    <option value="mode1">Geospatial Overlay</option>
+                    <option value="mode2">Dual-Pane Analysis</option>
+                    <option value="mode3">Metrics Dashboard</option>
+                    <option value="mode4">Scenario Simulator</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="main-content" id="dynamic-content">
+            <!-- Content will be injected here -->
+        </div>
+    </div>
+
+    <!-- Mode 1: Geospatial Overlay -->
+    <template id="tpl-mode1">
+        <div class="mode1-container">
+            <div id="m1-map" class="full-map"></div>
+            <div class="floating-panel glass-panel controls-panel-m1">
+                <h2>Simulation Controls</h2>
+                <div class="control-group">
+                    <label class="control-label">Volatility Shock (%): <span id="m1-shock-display">10%</span></label>
+                    <input type="range" id="m1-shock" min="0" max="100" step="5" value="10">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Viewport Bounding Box:</label>
+                    <select id="m1-viewport" class="cyber-select">
+                        <option value="Global">Global</option>
+                        <option value="Americas">Americas</option>
+                        <option value="EMEA">EMEA</option>
+                        <option value="APAC">APAC</option>
+                    </select>
+                </div>
+                <button id="m1-run-btn" class="cyber-button">Run Global Analysis</button>
+                <div id="m1-alerts" class="alerts-container-mini"></div>
+            </div>
+            <div class="floating-panel glass-panel details-panel-m1" id="m1-details" style="display:none;">
+                <h3>Node Details</h3>
+                <div id="m1-node-info"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Mode 2: Dual-Pane Analysis -->
+    <template id="tpl-mode2">
+        <div class="mode2-container">
+            <div class="pane left-pane glass-panel">
+                <div id="m2-map" class="full-map"></div>
+            </div>
+            <div class="pane right-pane glass-panel">
+                <div class="controls-row">
+                    <button id="m2-run-btn" class="cyber-button">Sync Data</button>
+                    <span class="control-label">Click regions on map to highlight network.</span>
+                </div>
+                <div id="m2-network" class="full-network"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Mode 3: Metrics Dashboard -->
+    <template id="tpl-mode3">
+        <div class="mode3-container">
+            <div class="widget map-widget glass-panel">
+                <div id="m3-map" class="full-map"></div>
+            </div>
+            <div class="widget network-widget glass-panel">
+                <div id="m3-network" class="full-network"></div>
+            </div>
+            <div class="widget chart-widget glass-panel">
+                <h3>Vulnerability Ranking</h3>
+                <div class="chart-container">
+                    <canvas id="m3-chart"></canvas>
+                </div>
+            </div>
+            <div class="widget text-widget glass-panel">
+                <h3>Intelligence Briefing</h3>
+                <div id="m3-briefing" class="briefing-content">
+                    Click "Generate" to calculate risk metrics.
+                </div>
+                <button id="m3-run-btn" class="cyber-button mt-auto">Generate Report</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Mode 4: Scenario Simulator -->
+    <template id="tpl-mode4">
+        <div class="mode4-container">
+            <div class="wizard-panel glass-panel">
+                <h2>Scenario Selector</h2>
+                <div class="control-group">
+                    <label class="control-label">Select Stress Test:</label>
+                    <select id="m4-scenario" class="cyber-select">
+                        <option value="base">Baseline Check (10% Shock)</option>
+                        <option value="fx_spike">Global Currency Crisis (50% Shock)</option>
+                        <option value="conflict_emea">EMEA Escalation (80% Shock)</option>
+                        <option value="apac_blockade">APAC Supply Blockade (100% Shock)</option>
+                    </select>
+                </div>
+                <button id="m4-run-btn" class="cyber-button mt-auto">Execute Scenario</button>
+            </div>
+            <div class="scenario-map-panel glass-panel">
+                <div id="m4-map" class="full-map"></div>
+            </div>
+            <div class="report-panel glass-panel">
+                <h2>Impact Report</h2>
+                <div id="m4-report" class="report-content">Select a scenario and click execute to view the simulated impact report.</div>
+            </div>
+        </div>
+    </template>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
