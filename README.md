@@ -1,6 +1,6 @@
 # Geopolitical Risk Engine
 
-A modular, containerized Geopolitical Risk Assessment Engine designed to ingest real-world data, perform spatial and time-decay risk modeling, and visualize supply chain vulnerabilities in a high-performance interactive dashboard.
+A modular, containerized Geopolitical Risk Assessment Engine designed to ingest real-world data, perform spatial and time-decay risk modeling, and visualize supply chain vulnerabilities in a high-performance interactive dashboard. There are still some issues with the website, and I am working to fix them.
 
 ## Overview
 
